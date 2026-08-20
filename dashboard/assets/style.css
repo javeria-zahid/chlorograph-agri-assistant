@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --bg: #10130D;
+    --bg-alt: #171B12;
+    --surface: #1B2015;
+    --surface-2: #222819;
+    --border: #2E3524;
+    --text: #EDEFE6;
+    --text-muted: #8E9683;
+    --lime: #A8FF3D;
+    --lime-dim: rgba(168, 255, 61, 0.10);
+    --amber: #E8A855;
+    --amber-dim: rgba(232, 168, 85, 0.12);
+    --danger: #FF6B5E;
+    --danger-dim: rgba(255, 107, 94, 0.12);
+}
+
+/* ---------- Base app ---------- */
+.stApp {
+    background:
+        repeating-radial-gradient(circle at 15% 20%, transparent 0px, transparent 38px, rgba(168,255,61,0.025) 39px, rgba(168,255,61,0.025) 40px),
+        repeating-radial-gradient(circle at 85% 75%, transparent 0px, transparent 46px, rgba(232,168,85,0.02) 47px, rgba(232,168,85,0.02) 48px),
+        var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+section[data-testid="stSidebar"] {
+    background: var(--bg-alt);
+    border-right: 1px solid var(--border);
+}
+section[data-testid="stSidebar"] * { color: var(--text) !important; }
+
+#MainMenu, footer, header[data-testid="stHeader"] { background: transparent; }
+
+/* ---------- Typography helpers ---------- */
+.eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lime);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    animation: fadeInUp 0.6s ease both;
+}
+.eyebrow::before {
+    content: "";
+    width: 7px; height: 7px;
+    background: var(--lime);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--lime);
+    animation: pulse 2s infinite;
+}
+.display-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+    animation: fadeInUp 0.7s ease 0.05s both;
+}
+.display-title .accent { color: var(--lime); }
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    line-height: 1.6;
+    animation: fadeInUp 0.7s ease 0.1s both;
+}
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0 0 4px 0;
+}
+.section-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 22px; }
+
+/* ---------- Stat strip ---------- */
+.stat-strip { display: flex; gap: 28px; flex-wrap: wrap; margin: 28px 0 8px 0; animation: fadeInUp 0.7s ease 0.15s both; }
+.stat-item { border-left: 2px solid var(--border); padding-left: 14px; }
+.stat-value { font-family: 'IBM Plex Mono', monospace; font-size: 1.5rem; color: var(--lime); font-weight: 500; }
+.stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ---------- Module cards (home grid) ---------- */
+.module-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 24px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeInUp 0.6s ease both;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.module-card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--lime-dim), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.module-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--lime);
+    box-shadow: 0 12px 32px -12px rgba(168,255,61,0.25);
+}
+.module-card:hover::after { opacity: 1; }
+.module-icon {
+    font-size: 1.8rem;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--lime-dim);
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+.module-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.module-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.15rem; margin: 6px 0 8px 0; }
+.module-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.55; }
+.module-cta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--lime);
+    margin-top: 18px;
+    letter-spacing: 0.03em;
+}
+
+/* ---------- Result cards ---------- */
+.result-card {
+    border-radius: 14px;
+    padding: 26px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    animation: fadeInUp 0.5s ease both;
+}
+.result-card.success { border-color: var(--lime); background: linear-gradient(160deg, var(--lime-dim), var(--surface) 70%); }
+.result-card.warning { border-color: var(--danger); background: linear-gradient(160deg, var(--danger-dim), var(--surface) 70%); }
+.result-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 8px; }
+.result-value { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; }
+.result-value.lime { color: var(--lime); }
+.result-value.danger { color: var(--danger); }
+.confidence-bar-track { background: var(--surface-2); border-radius: 6px; height: 8px; margin-top: 14px; overflow: hidden; }
+.confidence-bar-fill { height: 100%; background: linear-gradient(90deg, var(--amber), var(--lime)); border-radius: 6px; animation: fillBar 1s ease both; }
+
+.empty-state {
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-muted);
+}
+.empty-state .icon { font-size: 2.2rem; margin-bottom: 10px; opacity: 0.6; }
+
+/* ---------- Streamlit widget overrides ---------- */
+.stButton > button {
+    background: var(--lime) !important;
+    color: #0E1109 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1.4rem !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -6px rgba(168,255,61,0.5);
+}
+div[data-baseweb="select"] > div, .stTextInput input, .stNumberInput input {
+    background: var(--surface-2) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
+div[data-baseweb="select"] * {
+    color: var(--text) !important;
+}
+div[data-baseweb="popover"] li, div[data-baseweb="popover"] li * {
+    color: var(--text) !important;
+}
+div[data-baseweb="popover"] { background: var(--surface-2) !important; }
+div[data-baseweb="popover"] li:hover { background: var(--lime-dim) !important; }
+svg { color: var(--text-muted); }
+[data-testid="stFileUploaderDropzone"] {
+    background: var(--surface) !important;
+    border: 1px dashed var(--border) !important;
+}
+.stTabs [data-baseweb="tab"] { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; }
+
+/* ---------- Label & helper text visibility fixes ---------- */
+label, [data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] {
+    color: #C4CBB7 !important;
+    opacity: 1 !important;
+}
+[data-testid="stFileUploaderDropzoneInstructions"] div,
+[data-testid="stFileUploaderDropzoneInstructions"] span,
+[data-testid="stFileUploaderDropzoneInstructions"] small {
+    color: #A9B39A !important;
+}
+[data-testid="stFileUploaderDropzoneInstructions"] svg { fill: #A9B39A !important; }
+.stTabs [aria-selected="true"] {
+    color: var(--lime) !important;
+}
+[data-baseweb="tab-highlight"] {
+    background-color: var(--lime) !important;
+}
+.stTabs [data-baseweb="tab"]:not([aria-selected="true"]) {
+    color: var(--text-muted) !important;
+}
+[data-testid="stMarkdownContainer"] p { color: inherit; }
+.stCaption, [data-testid="stCaptionContainer"] { color: var(--text-muted) !important; }
+
+/* ---------- Animations ---------- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.35; }
+}
+@keyframes fillBar {
+    from { width: 0%; }
+}
