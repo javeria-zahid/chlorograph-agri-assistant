@@ -2,10 +2,8 @@
 
 > An end-to-end precision agriculture system that recommends what to plant, what to feed it, forecasts what it will yield, and diagnoses leaf disease from a photo — four independently trained ML models, unified behind a single FastAPI backend with a custom-designed Streamlit dashboard.
 
-**Live demo:** _add your deployed Streamlit URL here_
-**Backend API docs:** _add your deployed Render URL + `/docs` here_
 
----
+##video : https://drive.google.com/file/d/1qbNeUGTk5XVTbtqJ3HoxYIvz4Y5LLzH5/view?usp=sharing--
 
 ## Table of Contents
 
