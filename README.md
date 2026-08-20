@@ -53,4 +53,4 @@ The dashboard runs at `http://localhost:8501`, backend API docs at `http://local
 
 ## Author
 
-Built as a final-year capstone project — AI Agriculture Assistant.
+Javeria Zahid
