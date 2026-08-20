@@ -192,13 +192,6 @@ Full request/response schemas are auto-documented at `/docs` (Swagger UI) once t
 - Yield: RandomForestRegressor with a `ColumnTransformer` preprocessing pipeline (StandardScaler + OneHotEncoder), engineered features (rain/temp ratio, pesticide/rain ratio, decade)
 
 
-## Deployment
-
-- **Backend:** deployed on [Render](https://render.com) as a free web service
-- **Dashboard:** deployed on [Streamlit Community Cloud](https://share.streamlit.io)
-
-Free-tier services sleep after inactivity — first load after idle time may take 30–60 seconds while the backend wakes up.
-
 ## Roadmap
 
 - [ ] Add authentication for multi-user usage tracking
